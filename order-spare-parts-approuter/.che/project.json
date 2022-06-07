@@ -1,0 +1,13 @@
+{
+	"type": "approuter.nodejs",
+	"builders": {
+		"default": "sap.nodejs",
+		"configs": {}
+	},
+	"runners": {
+		"configs": {}
+	},
+	"attributes": {},
+	"description": "order-spare-parts-approuter",
+	"mixinTypes": ["mtamodule"]
+}

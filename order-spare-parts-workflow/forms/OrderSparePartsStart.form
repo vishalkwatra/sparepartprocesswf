@@ -1,0 +1,47 @@
+{
+    "id": "ordersparepartsstart",
+    "name": "OrderSparePartsStart",
+    "revision": "v1",
+    "type": "start",
+    "readOnly": false,
+    "content": [
+        {
+            "id": "product",
+            "type": "string",
+            "label": "Product",
+            "readOnly": false,
+            "value": "${context.start.product}",
+            "constraints": {
+                "required": false
+            }
+        },
+        {
+            "id": "quantity",
+            "type": "integer",
+            "label": "Quantity",
+            "readOnly": false,
+            "value": "${context.start.quantity}",
+            "constraints": {
+                "required": false
+            }
+        },
+        {
+            "id": "business_reason",
+            "type": "string",
+            "label": "Business Reason",
+            "readOnly": false,
+            "value": "${context.start.businessReason}",
+            "constraints": {
+                "required": false
+            }
+        }
+    ],
+    "actions": [
+        {
+            "id": "action1",
+            "text": "Order",
+            "workflowDefinitionId": "orderspareparts",
+            "workflowPath": "/workflow-release-process/release-process-workflow/workflows/OrderSpareParts.workflow"
+        }
+    ]
+}

@@ -1,0 +1,51 @@
+{
+  "_version": "3.0.0",
+  "identification": {
+    "id": "com.sap.bpm.wus.form.player",
+    "entityType": "businessapp",
+    "i18n": "i18n/app.properties"
+  },
+  "payload": {
+    "visualizations": {
+      "order-spare-parts": {
+        "vizType": "sap.ushell.StaticAppLauncher",
+        "vizConfig": {
+          "sap.app": {
+            "title": "{{title3}}",
+            "subTitle": "{{subtitle3}}"
+          },
+          "sap.flp": {
+            "target": {
+              "inboundId": "bpmworkflow-Start",
+              "parameters": {
+                "formDefinitionId": {
+                  "value": {
+                    "value": "ordersparepartsstart",
+                    "format": "plain"
+                  }
+                },
+                "revision": {
+                  "value": {
+                    "value": "v1",
+                    "format": "plain"
+                  }
+                },
+                "appTitle": {
+                  "value": {
+                    "value": "{{apptitle3}}",
+                    "format": "plain"
+                  }
+                },
+                "formTitle": {
+                  "value": {
+                    "value": "{{formtitle3}}",
+                    "format": "plain"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }}

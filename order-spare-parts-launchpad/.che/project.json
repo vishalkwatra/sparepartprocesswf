@@ -1,0 +1,17 @@
+{
+	"type": "cfportalsite",
+	"builders": {
+		"default": "npm-builder",
+		"configs": {}
+	},
+	"runners": {
+		"default": "system:/sap.site.content.deployer/default",
+		"configs": {}
+	},
+	"attributes": {
+		"sap.watt.common.setting": [
+			"{\"generation\":[{\"templateId\":\"cfflpproject\",\"templateVersion\":\"2.4.0\",\"dateTimeStamp\":\"Mon, 12 Aug 2019 10:08:12 GMT\"}],\"basevalidator\":{\"services\":{\"xml\":\"xmlValidator\",\"js\":\"jsValidator\"}}}"
+		]
+	},
+	"mixinTypes": ["mtamodule"]
+}

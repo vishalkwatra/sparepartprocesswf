@@ -1,0 +1,72 @@
+ID: OrderSparePartsProcess
+_schema-version: '2.1'
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+version: 0.0.1
+modules:
+  - name: order-spare-parts-approuter
+    type: approuter.nodejs
+    path: order-spare-parts-approuter
+    parameters:
+      disk-quota: 512M
+      memory: 512M
+      buildpack: https://github.com/cloudfoundry/nodejs-buildpack/releases/download/v1.7.25/nodejs-buildpack-cflinuxfs3-v1.7.25.zip
+    requires:
+      - name: html5-repo-service
+      - name: portal-service
+      - name: workflow-service
+      - name: uaa-service
+  - name: order-spare-parts-workflow
+    type: com.sap.application.content
+    path: order-spare-parts-workflow
+    requires:
+      - name: workflow-service
+        parameters:
+          content-target: true
+  - name: order-spare-parts-launchpad
+    type: com.sap.portal.content
+    path: order-spare-parts-launchpad
+    parameters:
+      stack: cflinuxfs3
+      memory: 128M
+      buildpack: https://github.com/cloudfoundry/nodejs-buildpack/releases/download/v1.7.25/nodejs-buildpack-cflinuxfs3-v1.7.25.zip
+    requires:
+      - name: portal-service
+      - name: workflow-service
+      - name: uaa-service
+resources:
+  - name: html5-repo-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-runtime
+    type: org.cloudfoundry.managed-service
+  - name: workflow-service
+    parameters:
+      service: workflow
+      service-plan: standard
+      config:
+        authorities:
+          - TASK_GET
+          - TASK_GET_CONTEXT
+          - TASK_GET_FORM
+          - TASK_GET_FORM_MODEL
+          - TASK_COMPLETE
+          - TASK_UPDATE
+    type: org.cloudfoundry.managed-service
+  - name: portal-service
+    parameters:
+      service: portal
+      service-plan: standard
+    type: org.cloudfoundry.managed-service
+  - name: uaa-service
+    parameters:
+      path: ./xs-security.json
+      service-plan: application
+      service: xsuaa
+    type: org.cloudfoundry.managed-service
+  - name: destination-service
+    parameters:
+      service-plan: lite
+      service: destination
+    type: org.cloudfoundry.managed-service
