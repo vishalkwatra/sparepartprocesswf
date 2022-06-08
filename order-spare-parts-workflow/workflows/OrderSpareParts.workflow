@@ -52,7 +52,7 @@
 			"isHiddenInLogForParticipant": false,
 			"supportsForward": false,
 			"userInterface": "sapui5://comsapbpmworkflow.comsapbpmwusformplayer/com.sap.bpm.wus.form.player",
-			"recipientUsers": "vishal.kwatra@sap.com",
+			"recipientUsers": "PradeepG@q3f2.onmicrosoft.com",
 			"formReference": "/forms/OrderSpareParts/ApproveSparePartsOrder.form",
 			"userInterfaceParams": [{
 				"key": "formId",
